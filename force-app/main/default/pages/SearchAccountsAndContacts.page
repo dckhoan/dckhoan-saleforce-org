@@ -1,0 +1,23 @@
+<apex:page controller="SearchAccountsAndContactsController">
+    <apex:form >
+        <apex:pageBlock id="result_list">
+            <apex:pageBlockSection >
+                <apex:inputText value="{! searchText }"/>
+                <apex:commandButton reRender="result_list" value="Search" action="{! search }" />
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Results" rendered="{! recordsCount > 0 }" collapsible="false">
+                <apex:pageBlockTable value="{! records }" var="record">
+                    <apex:column value="{! record.Name }" headerValue="Record Name">
+                    </apex:column>
+                    <apex:column value="{! record.Type }" headerValue="Record Type" />
+                    <apex:column headerValue="Click to open">
+                        <apex:outputLink value="/{! record.Id }">View</apex:outputLink>
+                    </apex:column>
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Results" rendered="{! AND(recordsCount == 0, LEN(searchText) > 0)}" collapsible="false">
+                No records is found!
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
