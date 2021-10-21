@@ -16,7 +16,7 @@
                 </apex:pageBlockTable>
             </apex:pageBlockSection>
             <apex:pageBlockSection title="Results" rendered="{! AND(recordsCount == 0, LEN(searchText) > 0)}" collapsible="false">
-                No records is found!
+                No records found!
             </apex:pageBlockSection>
         </apex:pageBlock>
     </apex:form>
